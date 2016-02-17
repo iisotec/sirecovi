@@ -81,7 +81,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'db_sirecovi',
         'USER': 'root',
-        'PASSWORD': 'sistemas1'
+        'PASSWORD': 'sistemas'
   }
 }
 
