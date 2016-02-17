@@ -1,0 +1,3 @@
+#python bytecode
+*.py[co]
+*.pyc
