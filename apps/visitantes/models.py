@@ -18,12 +18,3 @@ class Oficina(models.Model):
 
 	def __unicode__(self):
 		return self.nombre
-
-'''class visita_oficina(models.Model):
-	"""docstring for visitante"""
-	dni = models.IntegerField(max_length=8, label='Dni')
-	nombre = models.TextField(max_length=120, label='Nombre')
-	estado = models.BooleanField(default=False)
-	
-	def __unicode__(self):
-		return self.nombre '''

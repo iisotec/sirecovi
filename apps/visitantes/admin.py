@@ -13,4 +13,3 @@ class VisitanteAdmin(admin.ModelAdmin):
 @admin.register(Oficina)
 class OficinaAdmin(admin.ModelAdmin):
 	list_display = ('nombre','estado')
-

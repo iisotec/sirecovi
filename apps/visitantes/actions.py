@@ -1,4 +1,3 @@
-import tablib
 from django.db.models import Model
 from django.db.models.fields.files import FieldFile
 from django.core.exceptions import PermissionDenied
