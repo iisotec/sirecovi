@@ -1,33 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Sistema de registro y control de visita - SIRECOVI</title>
-{% load staticfiles %}
-
-{% block css %}
-    <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <!--CSS personalizado -->
-    <link rel="stylesheet" href="{% static 'css/sb-admin.css' %}">
-    <!--  Fuentes personalizados -->
-    <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
-{% endblock css %}
- 
-</head>
-
-<body>
-
-    <div id="wrapper">
-
-        <!-- Navegacion -->
+ <!-- Navegacion -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <!-- Icono para moviles -->
             <div class="navbar-header">
@@ -135,10 +106,10 @@
                         <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Inicio</a>
                     </li>                   
                     <li>
-                        <a href="visitantes.html"><i class="fa fa-fw fa-table"></i> Visitantes</a>
+                        <a href="visitante.html"><i class="fa fa-fw fa-table"></i> Visitantes</a>
                     </li>
                     <li>
-                        <a href="oficinas.html"><i class="fa fa-fw fa-edit"></i> Oficinas</a>
+                        <a href="oficina.html"><i class="fa fa-fw fa-edit"></i> Oficinas</a>
                     </li>
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Reportes <i class="fa fa-fw fa-caret-down"></i></a>
@@ -155,44 +126,3 @@
             </div>
             <!-- /.Fin menu principal -->
         </nav>
-
-        <div id="page-wrapper">
-
-            <div class="container-fluid">
-
-                <!-- Cabecera principal -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">
-                            Incio <small>SIRECOVI   </small>
-                        </h1>
-                        <ol class="breadcrumb">
-                            <li class="active">
-                                <i class="fa fa-dashboard"></i> Inicio
-                            </li>
-                        </ol>
-                    </div>
-                </div>
-                <!-- /.row -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        CUERPO INDEX
-                        <br>
-                        CUERPO INDEX
-                        <br>
-                        CUERPO INDEX
-                </div>
-    
-            </div>
-    
-        </div>
-    </div>
-    {% block js %}
-     <!-- jQuery -->
-       <script src="{% static 'js/jquery.js' %}"></script>
-       <!-- Bootstrap Core JavaScript -->
-        <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    {% endblock js %}       
-</body>
-
-</html>

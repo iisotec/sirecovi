@@ -31,6 +31,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='oficina',
             name='visit_oficina',
-            field=models.ManyToManyField(to='visitantes.Visitante'),
+            field=models.ManyToManyField(to='administrador.Visitante'),
         ),
     ]
