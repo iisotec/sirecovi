@@ -1,5 +1,6 @@
 from django.db import models
-
+from django.template.defaultfilters import slugify
+from django.conf import settings
 # Create your models here.
 class Visitante(models.Model):
 	"""docstring for visitante"""
@@ -15,6 +16,7 @@ class Oficina(models.Model):
 	nombre = models.CharField(max_length=120, help_text='Nombre')
 	estado = models.BooleanField(default=False)
 	visit_oficina = models.ManyToManyField(Visitante)
+	usuario = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True)
 
 	def __unicode__(self):
 		return self.nombre

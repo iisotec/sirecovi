@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'apps.administrador',
     'apps.recepcion',
     'apps.oficina',
+    'apps.users',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -107,3 +108,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+AUTH_USER_MODEL = 'users.User'
