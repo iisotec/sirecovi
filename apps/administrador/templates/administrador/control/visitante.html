@@ -28,7 +28,7 @@
                 </div>
                 
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-12">
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">+ Registrar Visitante</button>
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
                           <div class="modal-dialog" role="document">
@@ -65,6 +65,7 @@
                                         <th>NOMBRE</th>
                                         <th>APELLIDOS</th>
                                         <th>FECHA DE VISITA</th>
+                                        <th class="text-center">Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -74,6 +75,10 @@
                                         <td>{{visitantes.nombres}}</td>
                                         <td>{{visitantes.apellidos}}</td>
                                         <td>{{visitantes.fecha_visita}}</td>
+                                    <td class="text-right">
+                                        <a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></a>
+                                        <a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
+                                    </td>
                                     </tr>
                                     {% endfor %}
                                 </tbody>

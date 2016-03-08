@@ -8,7 +8,7 @@ def Index_view(request):
 	return render_to_response('administrador/control/index.html', context=RequestContext(request))	
 
 def Visitante_views(request):
-	datos = Visitante.objects.all()[:5]
+	datos = Visitante.objects.order_by('-fecha_visita').all()
 	#return render_to_response('index.html',{'datos':visitantes})
 	return render_to_response('administrador/control/visitante.html', {'v_visitantes':datos})	
 
