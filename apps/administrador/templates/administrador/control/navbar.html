@@ -103,13 +103,13 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li class="active">
-                        <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Inicio</a>
+                        <a href="{% url 'p_inicio' %}"><i class="fa fa-fw fa-dashboard"></i> Inicio</a>
                     </li>                   
                     <li>
-                        <a href="visitante.html"><i class="fa fa-fw fa-table"></i> Visitantes</a>
+                        <a href="{% url 'p_visitante'%}"><i class="fa fa-fw fa-table"></i> Visitantes</a>
                     </li>
                     <li>
-                        <a href="oficina.html"><i class="fa fa-fw fa-edit"></i> Oficinas</a>
+                        <a href="{% url 'p_oficina'%}"><i class="fa fa-fw fa-edit"></i> Oficinas</a>
                     </li>
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Reportes <i class="fa fa-fw fa-caret-down"></i></a>

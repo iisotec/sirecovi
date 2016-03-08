@@ -38,10 +38,12 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # mis aplicaciones
+    'apps.users',
+    #  Muy importante: ejecutar primero la app User para que haya relacion con otros tablas
     'apps.administrador',
     'apps.recepcion',
     'apps.oficina',
-    'apps.users',
+    
 )
 
 MIDDLEWARE_CLASSES = (
@@ -108,4 +110,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+# Esta parte es para poder ejercutar Nuestro propio Tabla USERS
 AUTH_USER_MODEL = 'users.User'
