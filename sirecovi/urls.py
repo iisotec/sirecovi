@@ -20,7 +20,7 @@ from apps.administrador import views
 urlpatterns = [
     url(r'^$', views.Index_principal),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^administrador/', include('apps.administrador.urls')),
+    url(r'^administrador/', include('apps.administrador.urls', namespace="administrador_app")),
     url(r'^recepcion/', include('apps.recepcion.urls')),
     url(r'^oficina/', include('apps.oficina.urls')),
 ]

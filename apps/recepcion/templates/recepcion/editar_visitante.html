@@ -1,0 +1,38 @@
+{% extends "base_visitante.html" %}
+
+{% block title %}Editar Visitante{% endblock title %}
+{% block content %}
+    <div id="wrapper">
+
+        {% include "navbar.html" %}
+
+        <div id="page-wrapper">
+
+            <div class="container-fluid">
+
+                <!-- Cabecera -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Oficinas
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li>
+                                <i class="fa fa-dashboard"></i>  <a href="{% url 'p_inicio'%}">Inicio</a>
+                            </li>
+                            <li class="active">
+                                <i class="fa fa-edit"></i> Visitantes
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="row">
+                <p>Cuerpo Visitantes</p>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+{% endblock content %}
