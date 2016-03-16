@@ -1,10 +1,10 @@
-{% extends "administrador/base_administrador.html" %}
+{% extends "oficina/base_oficina.html" %}
 
 {% block title %}Oficinas{% endblock title %}
 {% block content %}
     <div id="wrapper">
 
-        {% include "administrador/control/navbar.html" %}
+         {% include "oficina/control/navbar.html" %}
 
         <div id="page-wrapper">
 
@@ -14,11 +14,14 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Oficinas
+                            Oficina de: Alcaldia
                         </h1>
+                        <a href="#" class="btn btn-success">
+                            <span class="glyphicon glyphicon-chevron-right"></span> Cerrar Oficina
+                        </a>
                         <ol class="breadcrumb">
                             <li>
-                                <i class="fa fa-dashboard"></i>  <a href="{% url 'administrador_app:p_inicio'%}">Inicio</a>
+                                <i class="fa fa-dashboard"></i>  <a href="{% url 'oficina_app:ap_oficina'%}">Inicio</a>
                             </li>
                             <li class="active">
                                 <i class="fa fa-edit"></i> Oficinas
@@ -28,17 +31,17 @@
                 </div>
 
                 <div class="row">
-                    <a class="btn btn-primary pull-right" href="{% url 'administrador_app:po_nuevo' %}">
+                    <!--a class="btn btn-primary pull-right" href="{% url 'administrador_app:po_nuevo' %}">
                         <span class="glyphicon glyphicon-plus"></span> Crear una Oficina
-                    </a>
-                    <h2>Mostrando Oficinas</h2>
+                    </a>-->
+                    <h2> Oficinas</h2>
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover">
                             <thead>
                                 <tr>
                                     <th>Nombre Oficina</th>
-                                    <th>Estado Oficina</th>
-                                    <th>Usuario de Oficina</th>
+                                    <th>Estado</th>
+                                    <th>Usuario</th>
                                     <th class="text-center">Acciones</th>
                                 </tr>
                             </thead>
@@ -46,11 +49,10 @@
                                 {% for oficinas in v_oficinas %}
                                 <tr>
                                     <td>{{oficinas.nombre}}</td>
-                                    <td>{{oficinas.estado_oficina}}</td>
-                                    <td>{{oficinas.usuario}}</td>
+                                    <td>{{oficinas.estado}}</td>
+                                    <td>{{visitantes.usuario_id}}</td>
                                 <td class="text-center">
                                     <a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></a>
-                                    </a>
                                     <a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
                                 </td>
                                 </tr>

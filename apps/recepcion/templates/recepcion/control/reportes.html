@@ -1,0 +1,44 @@
+{% extends "recepcion/base_recepcion.html" %}
+
+{% block title %}Reportes{% endblock title %}
+    
+{% block content %}
+        
+    <div id="wrapper">
+    
+        {% include "recepcion/control/navbar.html" %}
+
+        <div id="page-wrapper">
+
+            <div class="container-fluid">
+                <!-- Cabecera principal -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Visitantes
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li>
+                                <i class="fa fa-dashboard"></i>  <a href="{% url 'recepcion_app:p_visitante'%}">Inicio</a>
+                            </li>
+                            <li class="active">
+                                <i class="fa fa-table"></i> Visitantes
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <!-- Reportes -->      
+                    <div class="col-lg-12">
+                        <h2>{{title}}</h2>
+                    </div>
+                </div>
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+{% endblock content %}

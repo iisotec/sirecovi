@@ -103,24 +103,13 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li class="active">
-                        <a href="{% url 'administrador_app:p_inicio' %}"><i class="fa fa-fw fa-dashboard"></i> Inicio</a>
+                        <a href="{% url 'recepcion_app:p_visitante' %}"><i class="fa fa-fw fa-dashboard"></i> Inicio</a>
                     </li>                   
                     <li>
-                        <a href="{% url 'administrador_app:p_visitante'%}"><i class="fa fa-fw fa-table"></i> Visitantes</a>
+                        <a href="{% url 'recepcion_app:p_visitante'%}"><i class="fa fa-fw fa-table"></i> Visitantes</a>
                     </li>
                     <li>
-                        <a href="{% url 'administrador_app:p_oficina'%}"><i class="fa fa-fw fa-edit"></i> Oficinas</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Reportes <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo" class="collapse">
-                            <li>
-                                <a href="#">Reporte de visitas</a>
-                            </li>
-                            <li>
-                                <a href="#">Reporte de Oficinas</a>
-                            </li>
-                        </ul>
+                        <a href="#"><i class="fa fa-fw fa-table"></i> Reportes</a>
                     </li>
                 </ul>
             </div>

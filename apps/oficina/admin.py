@@ -5,4 +5,4 @@ from .actions import export_as_excel
 
 @admin.register(Oficina)
 class OficinaAdmin(admin.ModelAdmin):
-	list_display = ('nombre','estado')
+	list_display = ('nombre','estado_oficina')

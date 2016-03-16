@@ -11,4 +11,5 @@ class VisitanteForm(forms.ModelForm):
             'nombres': forms.TextInput(attrs={'class': 'form-control', 'rows': '2'}),
             'apellidos': forms.TextInput(attrs={'class': 'form-control', 'rows': '2'}),
             'fecha_visita': forms.DateTimeInput(attrs={'class': 'form-control'}),
+            'oficina' : forms.SelectMultiple(attrs={'class': 'form-control'}),
             }

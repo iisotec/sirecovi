@@ -28,7 +28,36 @@
                 </div>
 
                 <div class="row">
-                <p>Cuerpo Oficinas</p>
+                <p>Edita Oficina</p>
+                    <a href="{% url 'administrador_app:p_oficina' %}" class="btn btn-success">
+                        <span class="glyphicon glyphicon-chevron-left"></span> Atrás
+                    </a>
+                    <form role="form" action="{% url 'administrador_app:Oeditar' oficina.id %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
+                        <p class="lead"><span class="glyphicon glyphicon-info-sign"></span> Actualice los  los datos de la Oficina.</p>
+
+                        {% if form.errors %}
+                            <div class="alert alert-danger" role="alert">
+                                {{ form.errors }}
+                            </div>
+                        {% endif %}
+
+                        <div class="form-group">
+                            <label>{{ form.nombre.label_tag }}</label>
+                            {{ form.nombre }}
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                {{ form.estado_oficina }} {{ form.estado_oficina.label_tag }}
+                            </label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>{{ form.usuario.label_tag }}</label>
+                            {{ form.usuario }}
+                        </div>                
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Actualizar Oficina</button>                        </div>
+                    </form>
                 </div>
 
             </div>

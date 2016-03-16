@@ -5,7 +5,7 @@ from .actions import export_as_excel
 # Register your models here.
 @admin.register(Visitante)
 class VisitanteAdmin(admin.ModelAdmin):
-	list_display = ('dni','nombres','apellidos','fecha_visita')
+	list_display = ('dni','nombres','apellidos','fecha_registro')
 	search_fields = ('dni', 'nombres','apellidos',)
-	list_filter = ('fecha_visita',)
+	list_filter = ('fecha_registro',)
 	actions = [export_as_excel,]

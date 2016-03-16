@@ -41,9 +41,9 @@ INSTALLED_APPS = (
     'apps.users',
     #  Muy importante: ejecutar primero la app User para que haya relacion con otros tablas
     'apps.administrador',
-    'apps.recepcion',
     'apps.oficina',
-    
+    'apps.recepcion',
+        
 )
 
 MIDDLEWARE_CLASSES = (

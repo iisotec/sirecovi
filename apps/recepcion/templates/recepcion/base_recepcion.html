@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="{% static 'css/sb-admin.css' %}">
     <!--  Fuentes personalizados -->
     <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
+    <!-- Css para busquedas en tiempo real-->
+    <!--<link rel="stylesheet" href=" {% static 'css/jquery-ui.css' %}">-->
 
 {% endblock css %}
 
@@ -17,4 +19,11 @@
     <script src="{% static 'js/jquery.js' %}"></script>
       <!-- Bootstrap Core JavaScript -->
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
+      <!--Jquery para las busquedas -->
+   <!-- <script src=" {% static 'js/jquery-1.7.1.min.js' %}"></script>
+    <script src=" {% static 'js/jquery-ui.js' %}"></script>-->
 {% endblock js %}		
+{% block footer %}
+    <hr>
+    <p>MUNICIPALIDAD PROVINCIAL DE ABANCAY - 2016.</p>
+{% endblock footer %}

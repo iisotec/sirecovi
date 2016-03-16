@@ -1,10 +1,10 @@
-{% extends "base_oficina.html" %}
+{% extends "administrador/base_administrador.html" %}
 
-{% block title %}Oficinas{% endblock title %}
+{% block title %}Usuarios{% endblock title %}
 {% block content %}
     <div id="wrapper">
 
-        {# {% include "/navbar.html" %} #}
+        {% include "administrador/control/navbar.html" %}
 
         <div id="page-wrapper">
 
@@ -14,7 +14,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Oficinas
+                            Usuarios
                         </h1>
                         <ol class="breadcrumb">
                             <li>
@@ -29,15 +29,16 @@
 
                 <div class="row">
                     <a class="btn btn-primary pull-right" href="{% url 'administrador_app:po_nuevo' %}">
-                        <span class="glyphicon glyphicon-plus"></span> Crear una Oficina
+                        <span class="glyphicon glyphicon-plus"></span> Crear un Usuario
                     </a>
-                    <h2>Mostrando Oficinas</h2>
+                    <h2>Mostrando Usuarios</h2>
+                    
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover">
                             <thead>
                                 <tr>
-                                    <th>Nombre Oficina</th>
-                                    <th>Estado</th>
+                                    <th>Nombre</th>
+                                    <th>Apellidos</th>
                                     <th>Usuario</th>
                                     <th class="text-center">Acciones</th>
                                 </tr>

@@ -6,17 +6,17 @@ from .forms import OficinaForm
 from django.core.urlresolvers import reverse, reverse_lazy
 
 # Create your views here.
-def Index_view(request):
-	return render_to_response('oficina/index.html', context=RequestContext(request))	
+#def Index_view(request):
+#	return render_to_response('oficina/index.html', context=RequestContext(request))	
 
 def Oficina_views(request):
 	datos = Oficina.objects.order_by('-nombre')[:15].all()
-	return render_to_response('oficina/oficina.html', {'v_oficinas':datos})
-
+	return render_to_response('oficina/control/oficina.html', {'v_oficinas':datos})
+    
 class CreateOficina(CreateView):
     form_class = OficinaForm
-    template_name = 'oficina/crear_oficina.html'
-    success_url = reverse_lazy('administrador_app:po_nuevo')
+    template_name = 'oficina/control/crear_oficina.html'
+    success_url = reverse_lazy('oficina_app:apo_nuevo')
 
     def form_valid(self, form):
         form.instance.usuario = self.request.user
@@ -24,8 +24,8 @@ class CreateOficina(CreateView):
 
 class OficinaEdit(UpdateView):
 
-    template_name = 'oficina/editar_oficina.html'
-    success_url = reverse_lazy('events_app:panel')
+    template_name = 'oficina/control/editar_oficina.html'
+    success_url = reverse_lazy('oficina_app:panel')
     model = Oficina
     form_class = OficinaForm
 
@@ -34,7 +34,7 @@ class OficinaEdit(UpdateView):
         return super(OficinaEdit, self).form_valid(form)
 
 class OficinaDelete(DeleteView):
-    template_name = 'oficina/eliminar_visitante.html'
+    template_name = 'oficina/control/eliminar_visitante.html'
     model = Oficina
-    success_url = reverse_lazy('events_app:panel')
+    success_url = reverse_lazy('oficina_app:panel')
     context_object_name = 'event'

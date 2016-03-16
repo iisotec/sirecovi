@@ -21,6 +21,6 @@ urlpatterns = [
     url(r'^$', views.Index_principal),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^administrador/', include('apps.administrador.urls', namespace="administrador_app")),
-    url(r'^recepcion/', include('apps.recepcion.urls')),
-    url(r'^oficina/', include('apps.oficina.urls')),
+    url(r'^recepcion/', include('apps.recepcion.urls', namespace="recepcion_app")),
+    url(r'^oficina/', include('apps.oficina.urls', namespace="oficina_app")),
 ]
