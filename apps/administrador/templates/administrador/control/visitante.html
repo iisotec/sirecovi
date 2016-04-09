@@ -1,5 +1,4 @@
 {% extends "administrador/base_administrador.html" %}
-
 {% block title %}Visitantes{% endblock title %}
 {% block content %}
         
@@ -32,8 +31,13 @@
                         <a class="btn btn-primary pull-right" href="{% url 'administrador_app:pv_nuevo' %}">
                             <span class="glyphicon glyphicon-plus"></span> Crear Visitante
                         </a>
-                        
+                        <br>
+                        <br>  
+                        <!-- Combo de seleccion de Oficinas -->
                         <h2>Mostrando visitantes</h2>
+                        <div id="datos">
+                            
+                        </div>
                         <div class="table-responsive">
                             <table class="table table-bordered table-hover">
                                 <thead>
@@ -76,3 +80,4 @@
     </div>
     <!-- /#wrapper -->
 {% endblock content %}
+

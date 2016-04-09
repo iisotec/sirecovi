@@ -21,14 +21,14 @@
                                 <i class="fa fa-dashboard"></i>  <a href="{% url 'administrador_app:p_inicio'%}">Inicio</a>
                             </li>
                             <li class="active">
-                                <i class="fa fa-edit"></i> Oficinas
+                                <i class="fa fa-edit"></i> Usuarios
                             </li>
                         </ol>
                     </div>
                 </div>
 
                 <div class="row">
-                    <a class="btn btn-primary pull-right" href="{% url 'administrador_app:po_nuevo' %}">
+                    <a class="btn btn-primary pull-right" href="{% url 'administrador_app:pu_nuevo' %}">
                         <span class="glyphicon glyphicon-plus"></span> Crear un Usuario
                     </a>
                     <h2>Mostrando Usuarios</h2>
@@ -37,18 +37,20 @@
                         <table class="table table-bordered table-hover">
                             <thead>
                                 <tr>
+                                    <th>Nombre usuario</th>
                                     <th>Nombre</th>
                                     <th>Apellidos</th>
-                                    <th>Usuario</th>
+                                    <th>Email</th>
                                     <th class="text-center">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for oficinas in v_oficinas %}
+                                {% for usuarios in v_usuarios %}
                                 <tr>
-                                    <td>{{oficinas.nombre}}</td>
-                                    <td>{{oficinas.estado}}</td>
-                                    <td>{{visitantes.usuario_id}}</td>
+                                    <td>{{usuarios.username}}</td>
+                                    <td>{{usuarios.first_name}}</td>
+                                    <td>{{usuarios.last_name}}</td>
+                                    <td>{{usuarios.email}}</td>
                                 <td class="text-center">
                                     <a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></a>
                                     <a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>

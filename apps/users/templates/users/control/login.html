@@ -1,0 +1,71 @@
+{% extends "users/base_users.html" %}
+
+{% block title %}Usuarios - Registro e inicio de sesion{% endblock title %}
+    
+{% block content %}
+        
+    <div id="wrapper">
+    
+        {% include "users/control/navbar.html" %}
+
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <!-- Cabecera principal -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Registro de usuarios/inicio de sesion
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li class="active">
+                                <i class="fa fa-table"></i> Usuarios
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="row">                   
+                    <div class="col-lg-12">
+                        <div class="col-md-push-3 col-md-3 text-center">
+                            <form role="form" method="POST">{% csrf_token %}
+                                <p class="text-center">Registrate y empieza ser parte del SIRECOVI:</p>
+                                <div class="form-group">
+                                    {{ user_register.username }}
+                                    {{ user_register.username.errors }}
+                                </div>
+                                <div class="form-group">
+                                    {{ user_register.email }}
+                                    {{ user_register.email.errors }}
+                                </div>
+                                <div class="form-group">
+                                    {{ user_register.password }}
+                                    {{ user_register.password.errors }}
+                                </div>
+                                <button type="submit" name="register_form" class="btn btn-success btn-lg btn-block">Registrarse</button>
+                            </form>
+                        </div>    
+                        <div class="col-md-push-3 col-md-3 text-left">
+                            <form role="form" method="POST">{% csrf_token %}
+                                <p class="text-center">Ingresa tus credenciales y accede al sistema web</p>
+                                <div class="form-group">
+                                    {{ login_form.username }}
+                                    {{ login_form.username.errors }}
+                                </div>
+                                <div class="form-group">
+                                    {{ login_form.password }}
+                                    {{ login_form.password.errors }}
+                                </div>
+                                <button type="submit" name="login_form" class="btn btn-success btn-lg btn-block">Iniciar Sesion</button>
+                            </form>
+                        </div><!-- col-md-6 -->
+
+                    </div>
+                </div>
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+{% endblock content %}

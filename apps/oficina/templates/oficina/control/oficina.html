@@ -1,5 +1,5 @@
 {% extends "oficina/base_oficina.html" %}
-
+{% load staticfiles %}
 {% block title %}Oficinas{% endblock title %}
 {% block content %}
     <div id="wrapper">
@@ -36,29 +36,39 @@
                     </a>-->
                     <h2> Oficinas</h2>
                     <div class="table-responsive">
-                        <table class="table table-bordered table-hover">
-                            <thead>
-                                <tr>
-                                    <th>Nombre Oficina</th>
-                                    <th>Estado</th>
-                                    <th>Usuario</th>
-                                    <th class="text-center">Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for oficinas in v_oficinas %}
-                                <tr>
-                                    <td>{{oficinas.nombre}}</td>
-                                    <td>{{oficinas.estado}}</td>
-                                    <td>{{visitantes.usuario_id}}</td>
-                                <td class="text-center">
-                                    <a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></a>
-                                    <a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
-                                </td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
+                        {% if v_visitantes %}
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Dni</th>
+                                        <th>Nombres  y Apellidos</th>
+                                        <th>Fecha de Visita</th>
+                                        <th>Oficina</th>
+                                        <th>Estado de atencion</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for visitantes in v_visitantes %}
+                                    <tr>
+                                        <td>{{visitantes.visitante.dni}}</td>
+                                        <td>{{visitantes.visitante.nombres}}, {{visitantes.visitante.apellidos}}</td>
+                                        <td>{{visitantes.fecha_visita}}</td>
+                                        <td>{{visitantes.oficina.nombre}}</td>
+                                        {% if visitantes.estado_atencion %}<td class="text-center">
+                                                <input type='button' id='estado_aten' value='Atendido' class="btn btn-success"></input>
+                                            </td>
+                                        {% else %}
+                                            <td class="text-center">
+                                                <input type='button' id='{{visitantes.id}}' class="atenderVisitante btn btn-warning" value='Atender'></input>
+                                            </td>
+                                        {% endif %}
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        {% else %}
+                            <p>Actualmente no hay visitantes para esta Oficina...!</p> 
+                        {% endif %}
                     </div>
                 </div>
 
@@ -66,4 +76,44 @@
 
         </div>
     </div>
+        <script src="{% static 'js/jquery.min.js' %}"></script>
+        <script>
+                $.ajaxSetup({
+                beforeSend: function(xhr,settings){
+                function getCookie(name){
+                        var cookieValue = null;
+                        if (document.cookie && document.cookie != ''){
+
+                            var cookies = document.cookie.split(';');
+
+                            for (var i = 0; i< cookies.length; i++){
+                                    var cookie = jQuery.trim(cookies[i]);
+                                if (cookie.substring(0, name.length + 1) == (name + '=')){
+                                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                                    break;
+                                }        
+                            }
+                        }
+                    return cookieValue;
+                    }
+                        if(!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))){
+                        xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+                        }
+                    }    
+                });
+
+                    $('.atenderVisitante').on('click', Cambiar);
+                    function Cambiar(){
+                        var id = $(this).attr("id");
+                        $.ajax({
+                            data : {'id': id},
+                            url : '/oficina/estado_atencion_ajax/',
+                            type : 'get',
+                        });
+                    }
+
+        </script>   
 {% endblock content %}
+
+
+

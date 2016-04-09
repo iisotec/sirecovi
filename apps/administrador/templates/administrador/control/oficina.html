@@ -43,15 +43,15 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for oficinas in v_oficinas %}
+                                {% for oficinas in oficinas %}
                                 <tr>
                                     <td>{{oficinas.nombre}}</td>
                                     <td>{{oficinas.estado_oficina}}</td>
                                     <td>{{oficinas.usuario}}</td>
                                 <td class="text-center">
-                                    <a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></a>
+                                    <a href="{% url 'administrador_app:o_editar' oficinas.id %}" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></a>
                                     </a>
-                                    <a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
+                                    <a href="{% url 'administrador_app:o_eliminar' oficinas.id %}" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
                                 </td>
                                 </tr>
                                 {% endfor %}

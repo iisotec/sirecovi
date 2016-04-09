@@ -1,19 +1,30 @@
 from django.shortcuts import render_to_response, RequestContext, redirect, get_object_or_404
 from django.views.generic import TemplateView, CreateView, DetailView, UpdateView, DeleteView
-from .models import Visitante
+from .models import Visitante, VisitanteOficina
 from apps.users.models import User
-from .forms import VisitanteForm
+from .forms import VisitanteForm, VisitanteOficinaForm
 #import json
 from .htmltopdf import render_to_pdf
+from django.db.models import Q
 
 from django.core.urlresolvers import reverse, reverse_lazy
 # Create your views here.
 def Index_view(request):
 	return render_to_response('recepcion/index.html', context=RequestContext(request))	
-# mostrando todas la visitantes
-def Visitante_views(request):
-	datos = Visitante.objects.order_by('-fecha_registro')[:15].all()
-	return render_to_response('recepcion/control/visitante.html', {'vo_visitantes':datos})	
+# mostrando todas la visitantes a cada oficina
+class Visitante_views(TemplateView):
+
+    template_name = 'recepcion/control/visitante.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(Visitante_views, self).get_context_data(**kwargs)
+        context['vo_visitantes'] = VisitanteOficina.objects.order_by('-fecha_visita')[:15].all()
+        context['cantidad'] = context['vo_visitantes'].count()
+        return context
+
+# def Visitante_views(request):
+# 	datos = VisitanteOficina.objects.order_by('-fecha_visita')[:15].all()
+# 	return render_to_response('recepcion/control/visitante.html', {'vo_visitantes':datos})	
 
 class CreateVisitante(CreateView):
 
@@ -35,16 +46,15 @@ class VisitanteEdit(UpdateView):
         form.instance.organizer = self.request.user
         return super(EventEdit, self).form_valid(form)
 
-class VisitanteEdit(UpdateView):
+class VisitanteRegister(CreateView):
 
-    template_name = 'recepcion/editar_visitante.html'
+    form_class = VisitanteOficinaForm
+    template_name = 'recepcion/control/registrar_visitante.html'
     success_url = reverse_lazy('recepcion_app:p_visitante')
-    model = Visitante
-    form_class = VisitanteForm
-
+    
     def form_valid(self, form):
-        form.instance.organizer = self.request.user
-        return super(EventEdit, self).form_valid(form)
+        form.instance.user = self.request.user
+        return super(VisitanteRegister, self).form_valid(form)
 
 #     return render(request, "events/panel/eliminar_evento.html", {'event': event})
 class VisitanteDelete(DeleteView):
@@ -75,3 +85,20 @@ def pdf(request):
 #         data_json='fail'
 #     mimetype="application/json"
 #     return Http
+#Buscador por DNI, Nombre y Apellidos
+def search(request):
+    query = request.GET.get('q', '')
+    if query:
+        qset = (
+            Q(dni__icontains=query) |
+            Q(nombres__icontains=query) |
+            Q(apellidos__icontains=query)
+        )
+#        results = Visitante.objects.get(qset).distinct()
+        results = Visitante.objects.filter(qset)
+    else:
+        results = []
+    return render_to_response("recepcion/control/busqueda.html", {
+        "resultados": results,
+        "query": query
+    })

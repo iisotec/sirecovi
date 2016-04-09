@@ -14,9 +14,9 @@
                 <!-- Cabecera principal -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">
-                            Visitantes
-                        </h1>
+                        <h2 class="page-header">
+                            Registro de Visitantes
+                        </h2>
                         <ol class="breadcrumb">
                             <li>
                                 <i class="fa fa-dashboard"></i>  <a href="{% url 'recepcion_app:p_visitante'%}">Inicio</a>
@@ -32,13 +32,6 @@
                     <!-- Formulario de busqueda -->
                     <div class="row">
                       <div class="col-lg-12">
-                        <div class="input-group">
-                          <input type="text" class="form-control" placeholder="Buscar por DNI y Nombres">
-                          <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">Buscar</button>
-                          </span>
-                        </div><!-- /input-group -->
-                        <br>
                         <a class="btn btn-primary pull-left" href="{% url 'recepcion_app:r_nuevo' %}">
                             <span class="glyphicon glyphicon-plus"></span> Agregar un Visitante
                         </a> 
@@ -46,28 +39,43 @@
                     </div><!-- /.row -->           
                     
                     <div class="col-lg-12">
-                        <h2>Mostrando visitantes</h2>
+                        <h3>    
+                        <strong>Tienes <span class="label label-warning">{{ cantidad }}</span> Visitas</strong>
+                        </h3>
+
                         <div class="table-responsive">
+                        {% if vo_visitantes %}
                             <table class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
                                         <th>Dni</th>
-                                        <th>Nombre</th>
-                                        <th>Apellidos</th>
+                                        <th>Apellidos y Nombres</th>
                                         <th>Fecha de Visita</th>
+                                        <th>Oficina</th>
+                                        <th>Estado de atencion</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {% for visitantes in vo_visitantes %}
                                     <tr>
-                                        <td>{{visitantes.dni}}</td>
-                                        <td>{{visitantes.nombres}}</td>
-                                        <td>{{visitantes.apellidos}}</td>
-                                        <td>{{visitantes.fecha_registro}}</td>
+                                        <td>{{visitantes.visitante.dni}}</td>
+                                        <td>{{visitantes.visitante.apellidos|upper}}, {{visitantes.visitante.nombres}}</td>
+                                        <td>{{visitantes.fecha_visita}}</td>
+                                        <td>{{visitantes.oficina.nombre}}</td>
+                                        <td>
+                                        {% if visitantes.estado_atencion %}
+                                            <span class="label label-success">Atendido</span>
+                                        {% else %}
+                                            <span class="label label-default">No atendido</span>
+                                        {% endif %}
+                                        </td>
                                     </tr>
                                     {% endfor %}
                                 </tbody>
                             </table>
+                        {% else %}
+                            <p>Actualmente no hay visitantes...!</p> 
+                        {% endif %}
                         </div>
                     </div>
                 </div>

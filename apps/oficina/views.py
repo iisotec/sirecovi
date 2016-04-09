@@ -1,6 +1,7 @@
 from django.shortcuts import render_to_response, RequestContext, redirect, get_object_or_404
 from django.views.generic import TemplateView, CreateView, DetailView, UpdateView, DeleteView
 from .models import Oficina
+from apps.recepcion.models import VisitanteOficina
 from apps.users.models import User
 from .forms import OficinaForm
 from django.core.urlresolvers import reverse, reverse_lazy
@@ -10,8 +11,8 @@ from django.core.urlresolvers import reverse, reverse_lazy
 #	return render_to_response('oficina/index.html', context=RequestContext(request))	
 
 def Oficina_views(request):
-	datos = Oficina.objects.order_by('-nombre')[:15].all()
-	return render_to_response('oficina/control/oficina.html', {'v_oficinas':datos})
+	datos = VisitanteOficina.objects.order_by('-fecha_visita')[:15].all()
+	return render_to_response('oficina/control/oficina.html', {'v_visitantes':datos})
     
 class CreateOficina(CreateView):
     form_class = OficinaForm
@@ -38,3 +39,8 @@ class OficinaDelete(DeleteView):
     model = Oficina
     success_url = reverse_lazy('oficina_app:panel')
     context_object_name = 'event'
+def Estado_atencion_ajax(request):
+    if request.is_ajax():
+        #visita = Visitante.objects.filter(oficina=request.GET['id']).values()
+        print('Imprimiendo valores:', request.GET['id'].values())
+        #return render_to_response('administrador/control/listar_visitantesOficina.html', {'v_visitasOficina':visita})

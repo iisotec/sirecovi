@@ -5,7 +5,7 @@ class UserRegisterForm(forms.ModelForm):
 
 	class Meta:
 		model = User
-		fields = ('username', 'email', 'password')
+		fields = ('username', 'email', 'password', 'first_name', 'last_name')
 		widgets = {
 			'username' : forms.TextInput(attrs = 
 				{
@@ -22,7 +22,17 @@ class UserRegisterForm(forms.ModelForm):
 				{
 				'type' : 'password',
 				'class' : 'form-control',
-				'placeholder' : 'Ingresa un password'
+				'placeholder' : 'Ingresa una contrasena'
+				}),
+			'first_name' : forms.TextInput(attrs = 
+				{
+				'class' : 'form-control',
+				'placeholder' : 'Ingresa su nombre'
+				}),
+			'last_name' : forms.TextInput(attrs = 
+				{
+				'class' : 'form-control',
+				'placeholder' : 'Ingresa sus apellidos'
 				})
 		}
 

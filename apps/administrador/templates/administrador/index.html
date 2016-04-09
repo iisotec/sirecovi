@@ -33,61 +33,10 @@
 </div>
 
 <div class="container">
-
-    <div class="page-header">
-        <h4><strong>Visitantes disponibles</strong></h4>
-    </div>
-
-    <div class="row">
-        
-        <div class="col-md-2">
-            <div class="input-group">
-                <span class="input-group-addon"><span class="glyphicon glyphicon-tag"></span></span>
-                <select class="form-control">
-                    <option>filtrar por fecha</option>
-                </select>
-            </div>
-        </div>
-        <div class="col-md-2">
-            <div class="input-group">
-                <span class="input-group-addon"><span class="glyphicon glyphicon-credit-card"></span></span>
-            <select class="form-control">
-                <option>Tipo visitante</option>
-            </select>
-            </div>
-        </div>
-        <div class="col-md-8">
-            <div class="input-group">
-                <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
-                <input type="text" class="form-control" placeholder="Busca al visitante por DNI o por nombre">
-            </div>
-        </div>
-
-    </div>
-
 </div>
 
 <p></p>
 
 <div class="container eventos">    
-    
-    <div class="row contenedor-eventos">
-        {% for event in events %}
-        <div class="col-sm-1 col-md-3 ">
-            <div class="thumbnail equal">
-                <img src="{{ event.imagen.url }}" alt="250x180">
-                <div class="caption">
-                    <h4><a href="">{{ event.name }}</a></h4>
-                    <small class="date">{{ event.start }}</small>
-                    <div class="place">
-                        <small class="place">{{ event.place}}</small> / 
-                    </div>
-                    <span class="views">{{ event.views }}</span>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
-        
-    </div>
 </div>
 {% endblock content %}

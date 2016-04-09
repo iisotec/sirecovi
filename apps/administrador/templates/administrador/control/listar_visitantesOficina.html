@@ -1,0 +1,156 @@
+{% extends "administrador/base_administrador.html" %}
+{% block title %}Listado de Visitantes por Oficinas{% endblock title %}
+{% block content %}
+{% load staticfiles %}
+       
+    <div id="wrapper">
+    
+        {% include "administrador/control/navbar.html" %}
+
+        <div id="page-wrapper">
+
+            <div class="container-fluid">
+                <!-- Cabecera principal -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Visitantes
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li>
+                                <i class="fa fa-dashboard"></i>  <a href="{% url 'administrador_app:p_inicio'%}">Inicio</a>
+                            </li>
+                            <li class="active">
+                                <i class="fa fa-table"></i> Visitantes
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-lg-12">
+                        <a class="btn btn-primary pull-right" href="{% url 'administrador_app:pv_nuevo' %}">
+                            <span class="glyphicon glyphicon-plus"></span> Crear Visitante
+                        </a>
+                        <br>
+                        <br>  
+                         <!-- Combo de seleccion de Oficinas -->
+                        <form method="get" >
+                            <select class="form-control">
+                              <option>Seleccione la Oficina</option>
+                              {% for oficina in oficinas %}
+                                 <option value="{{oficina.id}}">{{oficina.nombre}}</option>
+                              {% endfor %}
+                            </select>
+                        </form>
+
+                        <div id="datos">
+                            
+                        </div>
+                        <div class="table-responsive">
+                        <!-- <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Dni</th>
+                                        <th>Nombre</th>
+                                        <th>Apellidos</th>
+                                        <th>Oficina</th>
+                                        <th class="text-center">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for visitantes in v_visitantes %}
+                                    <tr>
+                                        <td>{{visitantes.dni}}</td>
+                                        <td>{{visitantes.nombres}}</td>
+                                        <td>{{visitantes.apellidos}}</td>
+                                        <td>
+                                         {% for oficinas in visitantes.oficina.all %}
+                                         <li class="active"><i></i>
+                                            {{oficinas.nombre}}</li>
+                                        {% endfor %}
+                                        </td>
+                                    <td class="text-right">
+                                        <a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></a>
+                                        <a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
+                                    </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table> -->
+                            {% for key, value in v_visitasOficina.items %}
+                                {{ key }} <br>
+                                {% for key2,value2 in value.items %}
+                                    {{ key2 }} <br>
+                                    {% for key3, value3 in value2.items %}
+                                        {{ key3 }}:{{ value3 }} <br>
+                                    {% endfor %}
+                                {% endfor %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    <!--     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script>
+            $.ajaxSetup({
+            beforeSend: function(xhr,settings){
+            function getCookie(name){
+                    var cookieValue = null;
+                    if (document.cookie && document.cookie != ''){
+
+                        var cookies = document.cookie.split(';');
+
+                        for (var i = 0; i< cookies.length; i++){
+                                var cookie = jQuery.trim(cookies[i]);
+                            if (cookie.substring(0, name.length + 1) == (name + '=')){
+                                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                                break;
+                            }        
+                        }
+                    }
+                return cookieValue;
+                }
+                    if(!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))){
+                    xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+                    }
+                }    
+            });
+/*
+                $('select').on('change', Cambiar);
+                function Cambiar(){
+                    var id = $(this).val()
+                    $.ajax({
+                        data : {'id': id},
+                        url : '/administrador/busqueda_ajax/',
+                        type : 'get',
+                        success : function(data){
+                            var object = JSON.parse(data)
+                            var html = "<h2>Mostrando visitantes por Oficina</h2><table class='table table-bordered table-hover'><thead><tr><th>Nombre Oficina</th><th>estado Oficina</th></tr></thead><tbody> <tr> <td>" + object.dni + "</td><td>" + object.nombres + "</td></tr></tbody></table>";
+                            $("#datos").html(html);
+
+                        }
+
+                    });
+                }*/
+                $('select').on('change', Cambiar);
+                function Cambiar(){
+                    var id = $(this).val()
+                    $.ajax({
+                        data : {'id': id},
+                        url : '/administrador/busqueda_ajax/',
+                        type : 'get',
+                    });
+                }
+
+    </script>   
+{% endblock content %}
+
+

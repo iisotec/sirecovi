@@ -8,8 +8,7 @@ class OficinaForm(forms.ModelForm):
         exclude = ('views','created','modified',)
         widgets = {
             'nombre': forms.TextInput(attrs={'class': 'form-control'}),
-            'estado': forms.CheckboxInput(),
-            'visit_oficina': forms.SelectMultiple(attrs={'class': 'form-control'}),
+            'estado_oficina': forms.CheckboxInput(),
             'usuario': forms.Select(attrs={'class': 'form-control'}),
              }
  #ModelChoiceField(queryset=YourModel.objects.all()),

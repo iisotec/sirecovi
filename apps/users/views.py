@@ -24,7 +24,7 @@ def userlogin(request):
 	else:
 		user_register = UserRegisterForm()
 		login_form = LoginForm()
-	return render(request, 'users/login.html', 
+	return render(request, 'users/control/login.html', 
 				{'user_register' : user_register, 'login_form' : login_form})
 
 

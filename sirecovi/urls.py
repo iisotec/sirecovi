@@ -23,4 +23,6 @@ urlpatterns = [
     url(r'^administrador/', include('apps.administrador.urls', namespace="administrador_app")),
     url(r'^recepcion/', include('apps.recepcion.urls', namespace="recepcion_app")),
     url(r'^oficina/', include('apps.oficina.urls', namespace="oficina_app")),
+    url(r'^', include('apps.users.urls', namespace="users_app")),
+
 ]

@@ -1,0 +1,91 @@
+{% extends "recepcion/base_recepcion.html" %}
+
+<!-- {% block title %}Busquedas{% endblock title %} -->
+<title>Search{% if query %} Results{% endif %}</title>
+
+{% block content %}
+        
+    <div id="wrapper">
+    
+        {% include "recepcion/control/navbar.html" %}
+
+        <div id="page-wrapper">
+
+            <div class="container-fluid">
+                <!-- Cabecera principal -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Busqueda de Visitantes
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li>
+                                <i class="fa fa-dashboard"></i>  <a href="{% url 'recepcion_app:p_visitante'%}">Inicio</a>
+                            </li>
+                            <li class="active">
+                                <i class="fa fa-table"></i> Visitantes
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <!-- Formulario de busqueda -->
+                    <div class="row">
+                      <div class="col-lg-12">
+                      <form action="." method="GET">
+                        <div class="input-group">
+                          <input type="text" class="form-control" placeholder="Buscar  por DNI o Nombres" autocomplete="off" name="q" value="{{ query|escape }}">   
+                          <span class="input-group-btn">
+                            <button class="btn btn-default" value="Search" type="submit">Buscar</button>
+                          </span>
+                          </form>
+                        </div><!-- /input-group -->
+                        <br> 
+                      </div><!-- /.col-lg-6 -->
+                    </div><!-- /.row -->           
+                    
+                    <div class="col-lg-12">
+                         {% if query %}
+                           <h2>Resultados de:"{{ query|escape }}":</h2>
+                        
+                           {% if resultados %}
+                             <table class="table table-bordered table-hover">
+                                 <thead>
+                                     <tr>
+                                         <th>Dni</th>
+                                         <th>Nombres</th>
+                                         <th>Apellidos</th>
+                                         <th class="text-center">Registrar Visita</th>
+                                     </tr>
+                                 </thead>
+                                 <tbody>
+                                     <tr>
+                                         <td>{{resultados.get.dni}}</td>
+                                         <td>{{resultados.get.nombres}}</td>
+                                         <td>{{resultados.get.apellidos}}</td>
+                                         <td class="text-center">
+                                             <a href="{% url 'recepcion_app:r_registrar'%}" class="btn btn-success"><span class="glyphicon glyphicon-eye-open"></span></a>
+                                         </a>
+                                     </td>
+                                     </tr>
+                                 </tbody>
+                             </table>
+
+                           {% else %}
+                             <h4>No se ha encontrado Visitantes</h4>
+                             <a class="btn btn-primary pull-left" href="{% url 'recepcion_app:r_nuevo' %}">
+                                 <span class="glyphicon glyphicon-plus"></span> Agregar un Visitante
+                             </a>
+                           {% endif %}
+                         {% endif %}
+                    </div>
+                </div>
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+{% endblock content %}

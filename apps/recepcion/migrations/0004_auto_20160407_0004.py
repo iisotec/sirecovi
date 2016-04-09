@@ -7,13 +7,13 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('recepcion', '0001_initial'),
+        ('recepcion', '0003_auto_20160403_0901'),
     ]
 
     operations = [
-        migrations.RenameField(
+        migrations.AlterField(
             model_name='visitante',
-            old_name='fecha_visita',
-            new_name='fecha_registro',
+            name='oficinas',
+            field=models.ManyToManyField(to='oficina.Oficina', through='recepcion.VisitanteOficina', blank=True),
         ),
     ]

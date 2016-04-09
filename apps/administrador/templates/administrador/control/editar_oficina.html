@@ -13,26 +13,24 @@
                 <!-- Cabecera -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">
-                            Oficinas
-                        </h1>
+                        <h2 class="page-header">
+                            <strong>Editando Oficina de: {{ oficina.nombre }}</strong>
+                        </h2>
                         <ol class="breadcrumb">
                             <li>
                                 <i class="fa fa-dashboard"></i>  <a href="{% url 'administrador_app:p_inicio'%}">Inicio</a>
                             </li>
                             <li class="active">
-                                <i class="fa fa-edit"></i> Oficinas
+                                <i class="fa fa-edit"></i> <strong>{{ oficina.nombre }}
                             </li>
                         </ol>
                     </div>
                 </div>
-
                 <div class="row">
-                <p>Edita Oficina</p>
                     <a href="{% url 'administrador_app:p_oficina' %}" class="btn btn-success">
                         <span class="glyphicon glyphicon-chevron-left"></span> Atrás
                     </a>
-                    <form role="form" action="{% url 'administrador_app:Oeditar' oficina.id %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
+                    <form role="form" action="{% url 'administrador_app:o_editar' oficina.id %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
                         <p class="lead"><span class="glyphicon glyphicon-info-sign"></span> Actualice los  los datos de la Oficina.</p>
 
                         {% if form.errors %}
